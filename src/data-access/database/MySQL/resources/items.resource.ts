@@ -12,7 +12,8 @@ const mysqlItemSchema = z.object({
  panoplie: z.number().int(),
  prix: z.number().int(),
  condition: z.string().max(100),
- armesInfos: z.string().max(100)
+ armesInfos: z.string().max(100),
+ gfxId: z.number().int().nullable(),
 });
 
 export type MysqlItem = z.infer<typeof mysqlItemSchema>;
@@ -24,7 +25,7 @@ export class ItemsResource {
   }
 
   async find(name: string): Promise<MysqlItem[]> {
-      const results = await mySql.query<RowDataPacket[]>("SELECT * FROM item WHERE MATCH(name) AGAINST(?) LIMIT 5", [name]);
+      const results = await mySql.query<RowDataPacket[]>("SELECT * FROM item WHERE MATCH(name) AGAINST(?) LIMIT 20", [name]);
       return results[0].map((item) => mysqlItemSchema.parse(item));
   }
 

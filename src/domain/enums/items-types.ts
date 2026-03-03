@@ -1,0 +1,465 @@
+export type ItemType = "AMULETTE"
+| "ARC"
+| "BAGUETTE"
+| "BATON"
+| "DAGUES"
+| "EPEE"
+| "MARTEAU"
+| "PELLE"
+| "ANNEAU"
+| "CEINTURE"
+| "BOTTES"
+| "POTION"
+| "PARCHO_EXP"
+| "DONS"
+| "RESSOURCE"
+| "COIFFE"
+| "CAPE"
+| "FAMILIER"
+| "HACHE"
+| "OUTIL"
+| "PIOCHE"
+| "FAUX"
+| "DOFUS"
+| "QUETES"
+| "DOCUMENT"
+| "FM_POTION"
+| "TRANSFORM"
+| "BOOST_FOOD"
+| "BENEDICTION"
+| "MALEDICTION"
+| "RP_BUFF"
+| "PERSO_SUIVEUR"
+| "PAIN"
+| "CEREALE"
+| "FLEUR"
+| "PLANTE"
+| "BIERE"
+| "BOIS"
+| "MINERAIS"
+| "ALLIAGE"
+| "POISSON"
+| "BONBON"
+| "POTION_OUBLIE"
+| "POTION_METIER"
+| "POTION_SORT"
+| "FRUIT"
+| "OS"
+| "POUDRE"
+| "COMESTI_POISSON"
+| "PIERRE_PRECIEUSE"
+| "PIERRE_BRUTE"
+| "FARINE"
+| "PLUME"
+| "POIL"
+| "ETOFFE"
+| "CUIR"
+| "LAINE"
+| "GRAINE"
+| "PEAU"
+| "HUILE"
+| "PELUCHE"
+| "POISSON_VIDE"
+| "VIANDE"
+| "VIANDE_CONSERVEE"
+| "QUEUE"
+| "METARIA"
+| "LEGUME"
+| "VIANDE_COMESTIBLE"
+| "TEINTURE"
+| "EQUIP_ALCHIMIE"
+| "OEUF_FAMILIER"
+| "MAITRISE"
+| "FEE_ARTIFICE"
+| "PARCHEMIN_SORT"
+| "PARCHEMIN_CARAC"
+| "CERTIFICAT_CHANIL"
+| "RUNE_FORGEMAGIE"
+| "BOISSON"
+| "OBJET_MISSION"
+| "SAC_DOS"
+| "BOUCLIER"
+| "PIERRE_AME"
+| "CLEFS"
+| "PIERRE_AME_PLEINE"
+| "POPO_OUBLI_PERCEP"
+| "PARCHO_RECHERCHE"
+| "PIERRE_MAGIQUE"
+| "CADEAUX"
+| "FANTOME_FAMILIER"
+| "DRAGODINDE"
+| "BOUFTOU"
+| "OBJET_ELEVAGE"
+| "OBJET_UTILISABLE"
+| "PLANCHE"
+| "ECORCE"
+| "CERTIF_MONTURE"
+| "RACINE"
+| "FILET_CAPTURE"
+| "SAC_RESSOURCE"
+| "ARBALETE"
+| "PATTE"
+| "AILE"
+| "OEUF"
+| "OREILLE"
+| "CARAPACE"
+| "BOURGEON"
+| "OEIL"
+| "GELEE"
+| "COQUILLE"
+| "PRISME"
+| "OBJET_VIVANT"
+| "ARME_MAGIQUE"
+| "FRAGM_AME_SHUSHU"
+| "POTION_FAMILIER";
+
+export const ItemTypesKeys: [string, ...string[]] = [
+    "AMULETTE",
+    "ARC",
+    "BAGUETTE",
+    "BATON",
+    "DAGUES",
+    "EPEE",
+    "MARTEAU",
+    "PELLE",
+    "ANNEAU",
+    "CEINTURE",
+    "BOTTES",
+    "POTION",
+    "PARCHO_EXP",
+    "DONS",
+    "RESSOURCE",
+    "COIFFE",
+    "CAPE",
+    "FAMILIER",
+    "HACHE",
+    "OUTIL",
+    "PIOCHE",
+    "FAUX",
+    "DOFUS",
+    "QUETES",
+    "DOCUMENT",
+    "FM_POTION",
+    "TRANSFORM",
+    "BOOST_FOOD",
+    "BENEDICTION",
+    "MALEDICTION",
+    "RP_BUFF",
+    "PERSO_SUIVEUR",
+    "PAIN",
+    "CEREALE",
+    "FLEUR",
+    "PLANTE",
+    "BIERE",
+    "BOIS",
+    "MINERAIS",
+    "ALLIAGE",
+    "POISSON",
+    "BONBON",
+    "POTION_OUBLIE",
+    "POTION_METIER",
+    "POTION_SORT",
+    "FRUIT",
+    "OS",
+    "POUDRE",
+    "COMESTI_POISSON",
+    "PIERRE_PRECIEUSE",
+    "PIERRE_BRUTE",
+    "FARINE",
+    "PLUME",
+    "POIL",
+    "ETOFFE",
+    "CUIR",
+    "LAINE",
+    "GRAINE",
+    "PEAU",
+    "HUILE",
+    "PELUCHE",
+    "POISSON_VIDE",
+    "VIANDE",
+    "VIANDE_CONSERVEE",
+    "QUEUE",
+    "METARIA",
+    "LEGUME",
+    "VIANDE_COMESTIBLE",
+    "TEINTURE",
+    "EQUIP_ALCHIMIE",
+    "OEUF_FAMILIER",
+    "MAITRISE",
+    "FEE_ARTIFICE",
+    "PARCHEMIN_SORT",
+    "PARCHEMIN_CARAC",
+    "CERTIFICAT_CHANIL",
+    "RUNE_FORGEMAGIE",
+    "BOISSON",
+    "OBJET_MISSION",
+    "SAC_DOS",
+    "BOUCLIER",
+    "PIERRE_AME",
+    "CLEFS",
+    "PIERRE_AME_PLEINE",
+    "POPO_OUBLI_PERCEP",
+    "PARCHO_RECHERCHE",
+    "PIERRE_MAGIQUE",
+    "CADEAUX",
+    "FANTOME_FAMILIER",
+    "DRAGODINDE",
+    "BOUFTOU",
+    "OBJET_ELEVAGE",
+    "OBJET_UTILISABLE",
+    "PLANCHE",
+    "ECORCE",
+    "CERTIF_MONTURE",
+    "RACINE",
+    "FILET_CAPTURE",
+    "SAC_RESSOURCE",
+    "ARBALETE",
+    "PATTE",
+    "AILE",
+    "OEUF",
+    "OREILLE",
+    "CARAPACE",
+    "BOURGEON",
+    "OEIL",
+    "GELEE",
+    "COQUILLE",
+    "PRISME",
+    "OBJET_VIVANT",
+    "ARME_MAGIQUE",
+    "FRAGM_AME_SHUSHU",
+    "POTION_FAMILIER"
+]
+
+export const IdsToItemTypes: Record<number, ItemType> = {
+    [1]: "AMULETTE",
+    [2]: "ARC",
+    [3]: "BAGUETTE",
+    [4]: "BATON",
+    [5]: "DAGUES",
+    [6]: "EPEE",
+    [7]: "MARTEAU",
+    [8]: "PELLE",
+    [9]: "ANNEAU",
+    [10]: "CEINTURE",
+    [11]: "BOTTES",
+    [12]: "POTION",
+    [13]: "PARCHO_EXP",
+    [14]: "DONS",
+    [15]: "RESSOURCE",
+    [16]: "COIFFE",
+    [17]: "CAPE",
+    [18]: "FAMILIER",
+    [19]: "HACHE",
+    [20]: "OUTIL",
+    [21]: "PIOCHE",
+    [22]: "FAUX",
+    [23]: "DOFUS",
+    [24]: "QUETES",
+    [25]: "DOCUMENT",
+    [26]: "FM_POTION",
+    [27]: "TRANSFORM",
+    [28]: "BOOST_FOOD",
+    [29]: "BENEDICTION",
+    [30]: "MALEDICTION",
+    [31]: "RP_BUFF",
+    [32]: "PERSO_SUIVEUR",
+    [33]: "PAIN",
+    [34]: "CEREALE",
+    [35]: "FLEUR",
+    [36]: "PLANTE",
+    [37]: "BIERE",
+    [38]: "BOIS",
+    [39]: "MINERAIS",
+    [40]: "ALLIAGE",
+    [41]: "POISSON",
+    [42]: "BONBON",
+    [43]: "POTION_OUBLIE",
+    [44]: "POTION_METIER",
+    [45]: "POTION_SORT",
+    [46]: "FRUIT",
+    [47]: "OS",
+    [48]: "POUDRE",
+    [49]: "COMESTI_POISSON",
+    [50]: "PIERRE_PRECIEUSE",
+    [51]: "PIERRE_BRUTE",
+    [52]: "FARINE",
+    [53]: "PLUME",
+    [54]: "POIL",
+    [55]: "ETOFFE",
+    [56]: "CUIR",
+    [57]: "LAINE",
+    [58]: "GRAINE",
+    [59]: "PEAU",
+    [60]: "HUILE",
+    [61]: "PELUCHE",
+    [62]: "POISSON_VIDE",
+    [63]: "VIANDE",
+    [64]: "VIANDE_CONSERVEE",
+    [65]: "QUEUE",
+    [66]: "METARIA",
+    [68]: "LEGUME",
+    [69]: "VIANDE_COMESTIBLE",
+    [70]: "TEINTURE",
+    [71]: "EQUIP_ALCHIMIE",
+    [72]: "OEUF_FAMILIER",
+    [73]: "MAITRISE",
+    [74]: "FEE_ARTIFICE",
+    [75]: "PARCHEMIN_SORT",
+    [76]: "PARCHEMIN_CARAC",
+    [77]: "CERTIFICAT_CHANIL",
+    [78]: "RUNE_FORGEMAGIE",
+    [79]: "BOISSON",
+    [80]: "OBJET_MISSION",
+    [81]: "SAC_DOS",
+    [82]: "BOUCLIER",
+    [83]: "PIERRE_AME",
+    [84]: "CLEFS",
+    [85]: "PIERRE_AME_PLEINE",
+    [86]: "POPO_OUBLI_PERCEP",
+    [87]: "PARCHO_RECHERCHE",
+    [88]: "PIERRE_MAGIQUE",
+    [89]: "CADEAUX",
+    [90]: "FANTOME_FAMILIER",
+    [91]: "DRAGODINDE",
+    [92]: "BOUFTOU",
+    [93]: "OBJET_ELEVAGE",
+    [94]: "OBJET_UTILISABLE",
+    [95]: "PLANCHE",
+    [96]: "ECORCE",
+    [97]: "CERTIF_MONTURE",
+    [98]: "RACINE",
+    [99]: "FILET_CAPTURE",
+    [100]: "SAC_RESSOURCE",
+    [102]: "ARBALETE",
+    [103]: "PATTE",
+    [104]: "AILE",
+    [105]: "OEUF",
+    [106]: "OREILLE",
+    [107]: "CARAPACE",
+    [108]: "BOURGEON",
+    [109]: "OEIL",
+    [110]: "GELEE",
+    [111]: "COQUILLE",
+    [112]: "PRISME",
+    [113]: "OBJET_VIVANT",
+    [114]: "ARME_MAGIQUE",
+    [115]: "FRAGM_AME_SHUSHU",
+    [116]: "POTION_FAMILIER"
+}
+
+export const ItemTypesToIds: Record<ItemType, number> = {
+    ["AMULETTE"]: 1,
+    ["ARC"]: 2,
+    ["BAGUETTE"]: 3,
+    ["BATON"]: 4,
+    ["DAGUES"]: 5,
+    ["EPEE"]: 6,
+    ["MARTEAU"]: 7,
+    ["PELLE"]: 8,
+    ["ANNEAU"]: 9,
+    ["CEINTURE"]: 10,
+    ["BOTTES"]: 11,
+    ["POTION"]: 12,
+    ["PARCHO_EXP"]: 13,
+    ["DONS"]: 14,
+    ["RESSOURCE"]: 15,
+    ["COIFFE"]: 16,
+    ["CAPE"]: 17,
+    ["FAMILIER"]: 18,
+    ["HACHE"]: 19,
+    ["OUTIL"]: 20,
+    ["PIOCHE"]: 21,
+    ["FAUX"]: 22,
+    ["DOFUS"]: 23,
+    ["QUETES"]: 24,
+    ["DOCUMENT"]: 25,
+    ["FM_POTION"]: 26,
+    ["TRANSFORM"]: 27,
+    ["BOOST_FOOD"]: 28,
+    ["BENEDICTION"]: 29,
+    ["MALEDICTION"]: 30,
+    ["RP_BUFF"]: 31,
+    ["PERSO_SUIVEUR"]: 32,
+    ["PAIN"]: 33,
+    ["CEREALE"]: 34,
+    ["FLEUR"]: 35,
+    ["PLANTE"]: 36,
+    ["BIERE"]: 37,
+    ["BOIS"]: 38,
+    ["MINERAIS"]: 39,
+    ["ALLIAGE"]: 40,
+    ["POISSON"]: 41,
+    ["BONBON"]: 42,
+    ["POTION_OUBLIE"]: 43,
+    ["POTION_METIER"]: 44,
+    ["POTION_SORT"]: 45,
+    ["FRUIT"]: 46,
+    ["OS"]: 47,
+    ["POUDRE"]: 48,
+    ["COMESTI_POISSON"]: 49,
+    ["PIERRE_PRECIEUSE"]: 50,
+    ["PIERRE_BRUTE"]: 51,
+    ["FARINE"]: 52,
+    ["PLUME"]: 53,
+    ["POIL"]: 54,
+    ["ETOFFE"]: 55,
+    ["CUIR"]: 56,
+    ["LAINE"]: 57,
+    ["GRAINE"]: 58,
+    ["PEAU"]: 59,
+    ["HUILE"]: 60,
+    ["PELUCHE"]: 61,
+    ["POISSON_VIDE"]: 62,
+    ["VIANDE"]: 63,
+    ["VIANDE_CONSERVEE"]: 64,
+    ["QUEUE"]: 65,
+    ["METARIA"]: 66,
+    ["LEGUME"]: 68,
+    ["VIANDE_COMESTIBLE"]: 69,
+    ["TEINTURE"]: 70,
+    ["EQUIP_ALCHIMIE"]: 71,
+    ["OEUF_FAMILIER"]: 72,
+    ["MAITRISE"]: 73,
+    ["FEE_ARTIFICE"]: 74,
+    ["PARCHEMIN_SORT"]: 75,
+    ["PARCHEMIN_CARAC"]: 76,
+    ["CERTIFICAT_CHANIL"]: 77,
+    ["RUNE_FORGEMAGIE"]: 78,
+    ["BOISSON"]: 79,
+    ["OBJET_MISSION"]: 80,
+    ["SAC_DOS"]: 81,
+    ["BOUCLIER"]: 82,
+    ["PIERRE_AME"]: 83,
+    ["CLEFS"]: 84,
+    ["PIERRE_AME_PLEINE"]: 85,
+    ["POPO_OUBLI_PERCEP"]: 86,
+    ["PARCHO_RECHERCHE"]: 87,
+    ["PIERRE_MAGIQUE"]: 88,
+    ["CADEAUX"]: 89,
+    ["FANTOME_FAMILIER"]: 90,
+    ["DRAGODINDE"]: 91,
+    ["BOUFTOU"]: 92,
+    ["OBJET_ELEVAGE"]: 93,
+    ["OBJET_UTILISABLE"]: 94,
+    ["PLANCHE"]: 95,
+    ["ECORCE"]: 96,
+    ["CERTIF_MONTURE"]: 97,
+    ["RACINE"]: 98,
+    ["FILET_CAPTURE"]: 99,
+    ["SAC_RESSOURCE"]: 100,
+    ["ARBALETE"]: 102,
+    ["PATTE"]: 103,
+    ["AILE"]: 104,
+    ["OEUF"]: 105,
+    ["OREILLE"]: 106,
+    ["CARAPACE"]: 107,
+    ["BOURGEON"]: 108,
+    ["OEIL"]: 109,
+    ["GELEE"]: 110,
+    ["COQUILLE"]: 111,
+    ["PRISME"]: 112,
+    ["OBJET_VIVANT"]: 113,
+    ["ARME_MAGIQUE"]: 114,
+    ["FRAGM_AME_SHUSHU"]: 115,
+    ["POTION_FAMILIER"]: 116
+}
