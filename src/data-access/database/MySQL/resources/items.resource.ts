@@ -25,7 +25,7 @@ export class ItemsResource {
   }
 
   async find(name: string): Promise<MysqlItem[]> {
-      const results = await mySql.query<RowDataPacket[]>("SELECT * FROM item WHERE MATCH(name) AGAINST(?) LIMIT 20", [name]);
+      const results = await mySql.query<RowDataPacket[]>("SELECT * FROM item WHERE MATCH(name) AGAINST(? IN BOOLEAN MODE) LIMIT 20", [`*${name.toLowerCase()}*`]);
       return results[0].map((item) => mysqlItemSchema.parse(item));
   }
 
