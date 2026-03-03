@@ -1,0 +1,14 @@
+version: '0.1'
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dofus_db
+      MYSQL_USER: dofus_user
+      MYSQL_PASSWORD: dofus_password
+    ports:
+      - '33061:3306'
+    volumes:
+      - ./data:/var/lib/mysql
