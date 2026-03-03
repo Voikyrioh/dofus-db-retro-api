@@ -1,0 +1,10 @@
+{
+  "dev": {
+    "driver": "mysql",
+    "host": "localhost",
+    "user": "dofus_user",
+    "password": "dofus_password",
+    "database": "dofus_db",
+    "port": 33061
+  }
+}
