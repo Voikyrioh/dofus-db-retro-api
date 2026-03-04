@@ -1,21 +1,31 @@
 import { type ServerType, serve } from '@hono/node-server'
 import app from './entry-point/app.js'
+import process from 'node:process'
+import Logger from '@logger'
+import config from "@config";
 
-async function start() {
+let server: ServerType;
+function graceFullStart() {
 	return serve(
 		{
 			fetch: app.fetch,
-			port: 3000,
+			hostname: config.Server.Host,
+			port: config.Server.Port,
 		},
 		(info) => {
-			console.log(`Server is running on http://localhost:${info.port}`)
+			Logger.info('======== Server started ========')
+			Logger.info(`Server is running on http://localhost:${info.port}`)
+			Logger.info(`================================`)
 		},
 	)
 }
-async function gracefulShutdown(server: ServerType) {
-	server.close()
-}
 
-start().then((server) => {
-	process.on('SIGINT', () => gracefulShutdown(server))
-})
+function graceFullStop(errorCode: number) {
+	server?.close((err) => {
+		console.log(err);
+		Logger.info('======== Server stopped ========')
+		process.exit(errorCode)
+	})
+}
+server = graceFullStart()
+process.on('SIGINT', graceFullStop)
