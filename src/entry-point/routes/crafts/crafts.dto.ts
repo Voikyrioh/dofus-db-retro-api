@@ -1,3 +1,3 @@
-import { z } from "zod";
+import { z } from 'zod'
 
-export const idParams = z.coerce.number().int().positive().safe();
+export const idParams = z.coerce.number().int().positive().safe()

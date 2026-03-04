@@ -1,22 +1,34 @@
 {
-  "name": "dofus-db-retro-api",
-  "scripts": {
-    "dev": "tsx watch src/index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "migrate:db": "db-migrate up"
-  },
-  "dependencies": {
-    "@hono/node-server": "^1.19.9",
-    "db-migrate": "^0.11.14",
-    "db-migrate-mysql": "^3.0.0",
-    "hono": "^4.12.3",
-    "mysql2": "^3.18.2"
-  },
-  "devDependencies": {
-    "@types/node": "^20.11.17",
-    "tsx": "^4.7.1",
-    "typescript": "^5.8.3",
-    "znv": "^0.5.0"
-  }
+	"name": "dofus-db-retro-api",
+	"main": "index.ts",
+	"scripts": {
+		"migrate:db": "db-migrate up",
+		"dev": "tsx --tsconfig=tsconfig.json ./src/index.ts",
+		"test": "mocha",
+		"test:watch": "mocha --watch"
+	},
+	"engines": {
+		"node": "^24.4.0"
+	},
+	"dependencies": {
+		"@hono/node-server": "^1.19.9",
+		"db-migrate": "^0.11.14",
+		"db-migrate-mysql": "^3.0.0",
+		"hono": "^4.12.3",
+		"mysql2": "^3.18.2",
+		"pino": "^9.7.0",
+		"pino-pretty": "^13.0.0",
+		"zod": "^4.0.5"
+	},
+	"devDependencies": {
+		"znv": "^0.5.0",
+		"@biomejs/biome": "2.1.2",
+		"@types/chai": "^5.2.2",
+		"@types/mocha": "^10.0.10",
+		"@types/node": "^24.0.13",
+		"chai": "^5.2.1",
+		"mocha": "^11.7.1",
+		"tsx": "^4.20.3",
+		"typescript": "^5.8.3"
+	}
 }

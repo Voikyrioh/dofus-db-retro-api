@@ -1,3 +1,1 @@
-export class MobsRepository {
-
-}
+export class MobsRepository {}

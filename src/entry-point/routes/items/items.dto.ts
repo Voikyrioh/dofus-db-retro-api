@@ -1,5 +1,5 @@
-import { z } from "zod";
+import { z } from 'zod'
 
 export const itemSeachQuery = z.object({
-    search: z.string().min(3)
+	search: z.string().min(3),
 })

@@ -1,21 +1,20 @@
-'use strict';
 
-var dbm;
-var type;
-var seed;
+
+var dbm
+var type
+var seed
 
 /**
-  * We receive the dbmigrate dependency from dbmigrate initially.
-  * This enables us to not have to rely on NODE_PATH.
-  */
-exports.setup = function(options, seedLink) {
-  dbm = options.dbmigrate;
-  type = dbm.dataType;
-  seed = seedLink;
-};
+ * We receive the dbmigrate dependency from dbmigrate initially.
+ * This enables us to not have to rely on NODE_PATH.
+ */
+exports.setup = (options, seedLink) => {
+	dbm = options.dbmigrate
+	type = dbm.dataType
+	seed = seedLink
+}
 
-exports.up = function(db) {
-  return db.runSql(`
+exports.up = (db) => db.runSql(`
     CREATE TABLE IF NOT EXISTS \`item\`
     (
       \`id\`            int(11)                                          NOT NULL DEFAULT '-1',
@@ -30,13 +29,10 @@ exports.up = function(db) {
       \`armesInfos\`    varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
       KEY \`id\` (\`id\`)
     )
-  `);
-};
+  `)
 
-exports.down = function(db) {
-  return db.runSql('DROP TABLE IF EXISTS `item`');
-};
+exports.down = (db) => db.runSql('DROP TABLE IF EXISTS `item`')
 
 exports._meta = {
-  "version": 1
-};
+	version: 1,
+}
