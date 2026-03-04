@@ -65,4 +65,13 @@ export default {
 		},
 		validator: z.number().min(1).max(65535),
 	},
+	JwtSignKey: {
+		name: 'JWT_PRIVATE_KEY',
+		description: 'Path to private key for signing JWT token',
+		default: {
+			_: './.ssl/id_rsa',
+			production: undefined,
+		},
+		validator: z.string().min(1),
+	}
 }

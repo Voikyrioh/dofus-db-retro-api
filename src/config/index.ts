@@ -11,7 +11,8 @@ export default {
 			MySqlUser: string
 			MySqlPassword: string
 			MySqlDatabase: string
-			MySqlPort: number
+			MySqlPort: number,
+			JwtSignKey: string
 		}
 	>(ServerConfig),
 }
