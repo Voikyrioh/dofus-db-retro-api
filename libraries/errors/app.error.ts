@@ -1,4 +1,4 @@
-type AppErrorType = 'Error' | 'Fatal'
+type AppErrorType = 'Invalid Argument' | 'Error' | 'Fatal'
 
 export class AppError extends Error {
 	name = 'AppError'
