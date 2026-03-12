@@ -70,7 +70,7 @@ export class AccountEntity implements AccountType{
 
     public async verifyPassword(password: string): Promise<void> {
         const valid = await verify(this.passwordHash, password);
-        if ( !valid ) throw new AppError('Invalid Argument', "Password is not correct");
+        if ( !valid ) throw new AppError('INVALID_PASSWORD', "Password is not correct");
     }
 
     public setAsAdmin(): AccountEntity {

@@ -1,12 +1,16 @@
-import type { AccountEntity } from "../../entities/account.entity";
+import type { AccountInfo } from "../../entities/account.entity";
 import { UseCase } from "../class/usecase.class";
-import { retrieveAccountFromUsername } from "./auth.service";
+import { createToken, retrieveAccountFromUsername } from "./auth.service";
 
 export class LoginUseCase extends UseCase {
-    async Execute(username: string, password: string): Promise<AccountEntity> {
+    async Execute(username: string, password: string): Promise<{ token: string, userInfos: AccountInfo }> {
         const account = await this.runStep('Get Account', retrieveAccountFromUsername.bind(null, username))
-        await account.verifyPassword(password)
+        await this.runStep('Assert account password', account.verifyPassword.bind(account, password))
+        const jwt = await this.runStep('Create JWT Token', createToken.bind(null, account))
 
-        return account
+        return {
+            token: jwt,
+            userInfos: account.getInfo()
+        }
     }
 }

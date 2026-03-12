@@ -20,6 +20,15 @@ export default {
 		},
 		validator: z.ipv4(),
 	},
+	Domain: {
+		name: 'DOMAIN',
+		description: 'Domain to listen to',
+		default: {
+			_: 'localhost',
+			production: undefined
+		},
+		validator: z.string(),
+	},
 	MySqlHost: {
 		name: 'MYSQL_HOST',
 		description: 'MySQL host for access to database',
@@ -73,5 +82,14 @@ export default {
 			production: undefined,
 		},
 		validator: z.string().min(1),
+	},
+	JwtExpiresMs: {
+		name: 'JWT_EXPIRATION_TIME_MS',
+		description: 'Path to private key for signing JWT token',
+		default: {
+			_: 3_600_000,
+			production: undefined,
+		},
+		validator: z.number().int(),
 	}
 }
