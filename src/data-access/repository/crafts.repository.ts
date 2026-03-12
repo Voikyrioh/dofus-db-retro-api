@@ -5,6 +5,7 @@ import {
 } from '../../domain/entities/craft.entity'
 import { resources } from '../database/MySQL/resources'
 import { repository } from './index'
+import assert from "node:assert";
 
 export class CraftsRepository {
 	async getCraftForItem(item: ItemEntity): Promise<CraftEntity | null> {
@@ -24,5 +25,28 @@ export class CraftsRepository {
 
 	async save(item: number, craft: { item: number; quantity: number }[]) {
 		await resources.recipes.save(item, craft)
+	}
+
+	async list(page: number, count: number): Promise<{ item: ItemEntity, recipe: CraftEntity }[]> {
+		const crafts = await resources.recipes.list(count, count * page - 1)
+		const craftList: { item: ItemEntity, recipe: CraftEntity }[] = []
+
+		for ( const craft of crafts ) {
+			const item = await repository.items.byId(craft.id)
+			assert(item, 'Item for craft does not exists')
+			const recipe = [];
+			for (const rec of craft.craft) {
+				const i = await repository.items.byId(rec.item)
+				if(!i) continue;
+
+				recipe.push({ item: i, quantity: rec.quantity })
+			}
+			craftList.push({
+				item,
+				recipe: craftEntitySchema.parse(recipe)
+			})
+		}
+
+		return craftList
 	}
 }

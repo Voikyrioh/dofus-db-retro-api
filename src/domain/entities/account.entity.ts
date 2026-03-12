@@ -6,6 +6,7 @@ import { AppError } from "@errors/app.error";
 export interface AccountInfo {
     username: string;
     email: string;
+    role: string;
 }
 export interface AccountInfoExtended {
     id: string;
@@ -16,6 +17,11 @@ export interface AccountInfoExtended {
 enum Roles {
     USER = 1,
     ADMIN = 2
+}
+
+const rolesMap: Record<Roles, string> = {
+    [Roles.USER]: 'user',
+    [Roles.ADMIN]: 'admin'
 }
 
 const accountValidator = z.object({
@@ -81,7 +87,8 @@ export class AccountEntity implements AccountType{
     public getInfo(): AccountInfo {
         return Object.freeze({
             username: this.username,
-            email: this.email
+            email: this.email,
+            role: rolesMap[this.role]
         })
     }
 

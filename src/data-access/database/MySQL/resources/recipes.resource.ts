@@ -46,4 +46,12 @@ export class RecipesRessource {
 		if (result.affectedRows === 0)
 			throw new Error(`No recipe found for id: ${id}`)
 	}
+
+	async list(limit: number, offset: number) {
+		const [crafts] = await mySql.query<RowDataPacket[]>(
+			'SELECT * FROM crafts LIMIT ?, ?', [limit, offset],
+		)
+
+		return crafts.map((craft) => mysqlRecipeSchema.parse(craft))
+	}
 }
