@@ -1,13 +1,13 @@
 import config from "@config";
-import { Hono } from "hono";
-import { zValidator } from "@hono/zod-validator";
-import { setCookie } from "hono/cookie"
-import { usecases } from "../../../domain/usecases";
-import { loginSchema, registerSchema } from "./auth.dto";
 import { AppError } from "@errors/app.error";
-import { HTTPException } from "hono/http-exception";
 import { HttpCodes } from "@errors/http.error";
 import { customValidator } from "@libraries";
+import { Hono } from "hono";
+import { setCookie, deleteCookie } from "hono/cookie"
+import { HTTPException } from "hono/http-exception";
+import { usecases } from "../../../domain/usecases";
+import { loginSchema, registerSchema } from "./auth.dto";
+import { authMiddleware } from "../../middlewares/auth";
 
 const router = new Hono();
 
@@ -34,5 +34,11 @@ router.post("/login", customValidator('json', loginSchema), async (c) => {
         else throw e;
     }
 });
+
+router.get("/logout", authMiddleware(), async (c) => {
+    deleteCookie(c, 'access-token')
+
+    return c.text('Logged out successfully');
+})
 
 export default router;

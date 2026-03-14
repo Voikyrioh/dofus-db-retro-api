@@ -83,6 +83,15 @@ export default {
 		},
 		validator: z.string().min(1),
 	},
+	JwtPubKey: {
+		name: 'JWT_PUBLIC_KEY',
+		description: 'Path to public key for signing JWT token',
+		default: {
+			_: './.ssl/id_rsa.pub',
+			production: undefined,
+		},
+		validator: z.string().min(1),
+	},
 	JwtExpiresMs: {
 		name: 'JWT_EXPIRATION_TIME_MS',
 		description: 'Path to private key for signing JWT token',

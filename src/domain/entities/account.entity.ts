@@ -14,12 +14,14 @@ export interface AccountInfoExtended {
     email: string;
 }
 
-enum Roles {
+export enum Roles {
     USER = 1,
     ADMIN = 2
 }
 
-const rolesMap: Record<Roles, string> = {
+export type RoleNames = 'user' | 'admin'
+
+export const rolesMap: Record<Roles, RoleNames> = {
     [Roles.USER]: 'user',
     [Roles.ADMIN]: 'admin'
 }

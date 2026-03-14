@@ -13,6 +13,7 @@ export default {
 			MySqlDatabase: string
 			MySqlPort: number,
 			JwtSignKey: string
+			JwtPubKey: string
 			Domain: string
 			JwtExpiresMs: string
 		}
