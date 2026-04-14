@@ -1,8 +1,10 @@
 {
 	"name": "dofus-db-retro-api",
 	"main": "index.ts",
+	"type": "module",
 	"scripts": {
 		"migrate:db": "db-migrate up",
+		"build": "node build.mjs",
 		"dev": "tsx --tsconfig=tsconfig.json ./src/index.ts",
 		"test": "mocha",
 		"test:watch": "mocha --watch",
@@ -30,6 +32,7 @@
 		"@types/mocha": "^10.0.10",
 		"@types/node": "^24.0.13",
 		"chai": "^5.2.1",
+		"esbuild": "^0.28.0",
 		"mocha": "^11.7.1",
 		"tsx": "^4.20.3",
 		"typescript": "^5.8.3"
