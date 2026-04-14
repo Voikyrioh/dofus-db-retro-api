@@ -5,6 +5,7 @@ export default {
 	Server: generateConfig<
 		typeof ServerConfig,
 		{
+			Environment: string
 			Host: string
 			Port: number
 			MySqlHost: string
@@ -16,6 +17,7 @@ export default {
 			JwtPubKey: string
 			Domain: string
 			JwtExpiresMs: string
+			LogFile: string | undefined
 		}
 	>(ServerConfig),
 }

@@ -2,6 +2,15 @@ import { z } from 'zod/v4'
 import { customZod } from '../../../libraries/custom-zod-types'
 
 export default {
+	Environment: {
+		name: 'NODE_ENV',
+		description: 'Running environment for the application',
+		default: {
+			_: 'development',
+			production: 'production',
+		},
+		validator: z.enum(['development', 'production', 'local']),
+	},
 	Port: {
 		name: 'PORT',
 		description: 'Port to run the server',
@@ -100,5 +109,14 @@ export default {
 			production: undefined,
 		},
 		validator: z.number().int(),
-	}
+	},
+	LogFile: {
+		name: 'LOG_FILE',
+		description: 'Path to the log file (production only)',
+		default: {
+			_: undefined,
+			production: './logs/app.log',
+		},
+		validator: z.string().optional(),
+	},
 }
