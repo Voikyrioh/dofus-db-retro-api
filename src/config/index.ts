@@ -6,6 +6,7 @@ export default {
 		typeof ServerConfig,
 		{
 			Environment: string
+			WebsiteUrl: string
 			Host: string
 			Port: number
 			MySqlHost: string
@@ -17,7 +18,7 @@ export default {
 			JwtPubKey: string
 			Domain: string
 			JwtExpiresMs: string
-			LogFile: string | undefined
+			LogFile: string|null
 		}
 	>(ServerConfig),
 }

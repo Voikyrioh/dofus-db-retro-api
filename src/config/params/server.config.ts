@@ -11,6 +11,15 @@ export default {
 		},
 		validator: z.enum(['development', 'production', 'local']),
 	},
+	WebsiteUrl: {
+		name: 'WEBSITE_URL',
+		description: 'Running environment for the application',
+		default: {
+			_: '127.0.0.1',
+			production: undefined,
+		},
+		validator: z.string(),
+	},
 	Port: {
 		name: 'PORT',
 		description: 'Port to run the server',
@@ -114,9 +123,9 @@ export default {
 		name: 'LOG_FILE',
 		description: 'Path to the log file (production only)',
 		default: {
-			_: undefined,
+			_: null,
 			production: './logs/app.log',
 		},
-		validator: z.string().optional(),
+		validator: z.string().nullish().default(null),
 	},
 }

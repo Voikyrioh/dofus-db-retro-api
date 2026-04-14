@@ -10,7 +10,7 @@ import config from "@config";
 
 const app = new Hono()
 
-app.use(cors({ origin: config.Server.Host, credentials: true }))
+app.use(cors({ origin: config.Server.WebsiteUrl, credentials: true }))
 
 app.route('crafts', craftsRoute)
 app.route('items', itemsRoute)
