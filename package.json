@@ -4,6 +4,7 @@
 	"type": "module",
 	"scripts": {
 		"migrate:db": "db-migrate up",
+		"seed": "tsx scripts/seed.ts",
 		"build": "node build.mjs",
 		"dev": "tsx --tsconfig=tsconfig.json ./src/index.ts",
 		"test": "mocha",

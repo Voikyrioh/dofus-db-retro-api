@@ -94,18 +94,18 @@ export default {
 	},
 	JwtSignKey: {
 		name: 'JWT_PRIVATE_KEY',
-		description: 'Path to private key for signing JWT token',
+		description: 'Base64-encoded HS256 symmetric key for JWT signing (dev: any string, prod: set via Vault)',
 		default: {
-			_: './.ssl/id_rsa',
+			_: 'development-jwt-secret-key-do-not-use-in-production',
 			production: undefined,
 		},
 		validator: z.string().min(1),
 	},
 	JwtPubKey: {
 		name: 'JWT_PUBLIC_KEY',
-		description: 'Path to public key for signing JWT token',
+		description: 'Reserved for future RS256 migration — unused with current HS256 setup',
 		default: {
-			_: './.ssl/id_rsa.pub',
+			_: 'development-jwt-public-key-placeholder',
 			production: undefined,
 		},
 		validator: z.string().min(1),

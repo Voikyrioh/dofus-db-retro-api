@@ -1,4 +1,3 @@
-import * as fs from "node:fs";
 import config from "@config";
 import type { MiddlewareHandler } from "hono";
 import { bearerAuth } from 'hono/bearer-auth'
@@ -8,7 +7,7 @@ import { type RoleNames, type Roles, rolesMap } from '../../domain/entities/acco
 export const authMiddleware = (verifyRoles?: RoleNames[]): MiddlewareHandler<{ Variables: {loggedUser: { role: Roles, id: string }} }> =>
     bearerAuth({
         verifyToken: async (token, c) => {
-            const jwt = await verify(token, fs.readFileSync(config.Server.JwtSignKey, {encoding: "base64"}).toString(), "HS256") as { role: Roles, id: string }
+            const jwt = await verify(token, config.Server.JwtSignKey, "HS256") as { role: Roles, id: string }
 
             c.set('loggedUser', jwt)
 

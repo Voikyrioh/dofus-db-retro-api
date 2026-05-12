@@ -6,5 +6,13 @@
 		"password": "dofus_password",
 		"database": "dofus_db",
 		"port": 33061
+	},
+	"production": {
+		"driver": "mysql",
+		"host": { "ENV": "MYSQL_HOST" },
+		"user": { "ENV": "MYSQL_USER" },
+		"password": { "ENV": "MYSQL_PASSWORD" },
+		"database": { "ENV": "MYSQL_DATABASE" },
+		"port": { "ENV": "MYSQL_PORT" }
 	}
 }

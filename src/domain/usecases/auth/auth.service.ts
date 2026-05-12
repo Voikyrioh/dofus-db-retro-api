@@ -1,4 +1,3 @@
-import * as fs from "node:fs/promises";
 import config from "@config";
 import { HTTPException } from "hono/http-exception";
 import { sign } from "hono/jwt";
@@ -7,9 +6,7 @@ import type { AccountEntity } from "../../entities/account.entity";
 import { AppError } from "@errors/app.error";
 
 export async function createToken(account: AccountEntity) {
-    const key =  await fs.readFile(config.Server.JwtSignKey, { encoding: "base64" })
-
-    return await sign({ id: account.id, role: account.role }, key)
+    return await sign({ id: account.id, role: account.role }, config.Server.JwtSignKey)
 }
 
 

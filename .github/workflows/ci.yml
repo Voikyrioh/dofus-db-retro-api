@@ -1,0 +1,19 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    uses: voikyrioh/infra/.github/workflows/deploy-app.yml@main
+    with:
+      app_name: dofus-db-api
+      image_name: dofus-db-retro-api
+    secrets:
+      VPS_HOST: ${{ secrets.SSH_HOST }}
+      VPS_SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      VPS_SSH_PORT: ${{ secrets.SSH_PORT }}
+      VAULT_ADDR: ${{ secrets.VAULT_ADDR }}
+      VAULT_ROLE_ID: ${{ secrets.VAULT_ROLE_ID }}
+      VAULT_SECRET_ID: ${{ secrets.VAULT_SECRET_ID }}
