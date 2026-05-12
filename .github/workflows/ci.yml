@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy:
-    uses: voikyrioh/infra/.github/workflows/deploy-app.yml@main
+    uses: voikyrioh/infra-as-code/.github/workflows/deploy-app.yml@main
     with:
       app_name: dofus-db-api
       image_name: dofus-db-retro-api
