@@ -13,7 +13,7 @@ router.get('/list', customValidator('query', listQueries), async (c) => {
 })
 
 router.get('/:id', customValidator('param', idParams), async (c) => {
-	const id = c.req.valid('param')
+	const {id} = c.req.valid('param')
 
 	const item = await repository.items.byId(id)
 	if (!item) return c.notFound()
@@ -24,7 +24,7 @@ router.get('/:id', customValidator('param', idParams), async (c) => {
 })
 
 router.put('/:id', customValidator('param', idParams), async (c) => {
-	const id = c.req.valid('param')
+	const {id} = c.req.valid('param')
 	const recipe = await c.req.json<{ item: number; quantity: number }[]>()
 	await repository.crafts.save(id, recipe)
 	return c.json({ message: 'Recipe saved' })

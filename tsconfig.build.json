@@ -1,25 +1,25 @@
 {
 	"compilerOptions": {
 		"allowJs": true,
-		"noCheck": true,
-		"declaration": true,
 		"esModuleInterop": true,
 		"module": "NodeNext",
-		"moduleResolution": "nodenext",
+		"moduleResolution": "NodeNext",
+		"noEmitOnError": false,
 		"outDir": "./dist",
+		"rootDir": ".",
 		"paths": {
 			"@config": ["./src/config/index.ts"],
 			"@logger": ["./libraries/logger/index.ts"],
 			"@libraries": ["./libraries/index.ts"],
 			"@entities": ["./src/domain/entities/index.ts"],
-			"@custom-zod": ["./libraries/custom-zod-type/index.ts"],
+			"@custom-zod": ["./libraries/custom-zod-types/index.ts"],
 			"@errors/*": ["./libraries/errors/*"]
 		},
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"target": "ESNext"
 	},
-	"include": ["src/**/*", "libraries/**/*", "index.ts"],
+	"include": ["src/**/*", "libraries/**/*"],
 	"exclude": ["node_modules", "dist", "./**/__tests__"],
 	"tsc-alias": {
 		"verbose": false,
