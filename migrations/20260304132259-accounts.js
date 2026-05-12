@@ -19,9 +19,12 @@ exports.up = (db) => db.runSql(`
     (
       id       varchar(26)  not null comment 'account ID'
         primary key,
-      username varchar(60)  null,
-      password varchar(255) null,
-      email    tinytext     null,
+      username varchar(60)      null,
+      password varchar(500)     null,
+      email    tinytext         null,
+      role     tinyint unsigned not null,
+      created_at timestamp default CURRENT_TIMESTAMP not null,
+      updated_at timestamp default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP,
       constraint accounts_unique_username
         unique (username)
     );

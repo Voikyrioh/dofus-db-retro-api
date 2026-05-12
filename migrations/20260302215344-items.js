@@ -27,6 +27,7 @@ exports.up = (db) => db.runSql(`
       \`prix\`          int(11)                                          NOT NULL DEFAULT '0' COMMENT 'prix de vente PAR un Npc',
       \`condition\`     varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
       \`armesInfos\`    varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
+      \`gfxId\`    		int(11),
       KEY \`id\` (\`id\`)
     )
   `)
