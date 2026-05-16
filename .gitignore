@@ -51,5 +51,5 @@ temp/
 *.tgz
 
 data
-migrations/1
+data/1
 .ssl
