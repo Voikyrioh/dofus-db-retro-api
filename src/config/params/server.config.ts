@@ -30,7 +30,7 @@ export default {
 		validator: customZod.application.port,
 	},
 	Host: {
-		name: 'HOSTNAME',
+		name: 'SERVER_HOST',
 		description: 'Who to listen to',
 		default: {
 			_: '127.0.0.1',

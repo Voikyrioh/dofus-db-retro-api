@@ -14,7 +14,7 @@ function graceFullStart() {
 		},
 		(info) => {
 			Logger.info('======== Server started ========')
-			Logger.info(`Server is running on http://localhost:${info.port}`)
+			Logger.info(`Server is running on https://${config.Server.Host}:${info.port}`)
 			Logger.info(`================================`)
 		},
 	)
