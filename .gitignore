@@ -52,5 +52,4 @@ temp/
 
 data
 migrations/1
-migrations/dumps
 .ssl
