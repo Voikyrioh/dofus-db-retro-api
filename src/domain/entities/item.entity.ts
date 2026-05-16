@@ -11,7 +11,7 @@ export const itemEntitySchema = z
 		level: z.number(),
 		stats: z.array(statsEntitySchema).nullable(),
 		sprite: z.object({
-			category: z.number(),
+			category: z.string(),
 			sprite: z.number().nullable(),
 		}),
 	})

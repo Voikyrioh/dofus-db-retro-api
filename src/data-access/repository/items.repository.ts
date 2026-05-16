@@ -23,7 +23,7 @@ export class ItemsRepository {
 			type: IdsToItemTypes[item.type],
 			stats: item.statsTemplate !== '' ? parseStats(item.statsTemplate) : null,
 			sprite: {
-				category: item.type,
+				category: IdsToItemTypes[item.type],
 				sprite: item.gfxId || null,
 			},
 		})

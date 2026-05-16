@@ -27,7 +27,7 @@ router.post("/login", customValidator('json', loginSchema), async (c) => {
             expires: new Date(Date.now() + config.Server.JwtExpiresMs)
         })
 
-        return c.json(userInfos);
+        return c.json({ ...userInfos, token });
     } catch (e) {
         if ( e instanceof AppError && ['INVALID_PASSWORD', 'NOT_FOUND'].includes(e.type))
             throw new HTTPException(HttpCodes.BAD_REQUEST, {message: 'INVALID_CREDENTIALS'})
