@@ -26,6 +26,8 @@ COPY --from=builder scripts scripts/
 COPY --from=builder database.json .
 COPY --from=builder package.json .
 
+RUN mkdir -p /data/logs
+
 EXPOSE 8080
 
 CMD ["node", "./index.js"]
