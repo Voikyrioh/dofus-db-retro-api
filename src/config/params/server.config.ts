@@ -36,7 +36,7 @@ export default {
 			_: '127.0.0.1',
 			production: '0.0.0.0',
 		},
-		validator: z.ipv4(),
+		validator: z.string(),
 	},
 	Domain: {
 		name: 'DOMAIN',
