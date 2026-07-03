@@ -1,8 +1,8 @@
 {
 	"require": "tsx",
 	"extensions": [".ts"],
-	"spec": ["src/**/__tests__/**/*.test.ts", "tests/**/*.spec.ts"],
-	"watch-files": ["src/**/*.ts"],
+	"spec": ["src/**/__tests__/**/*.test.ts", "libraries/**/__tests__/**/*.test.ts", "tests/**/*.spec.ts"],
+	"watch-files": ["src/**/*.ts", "libraries/**/*.ts"],
 	"timeout": 5000,
 	"color": true,
 	"reporter": "spec",
