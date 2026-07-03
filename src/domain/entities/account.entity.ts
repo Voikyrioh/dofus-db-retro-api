@@ -1,7 +1,7 @@
 import { argon2id, hash, verify } from "argon2";
 import { ulid } from "ulid";
 import { z } from "zod";
-import { AppError } from "@errors/app.error";
+import { FunctionalError } from "@errors/app.error";
 
 export interface AccountInfo {
     username: string;
@@ -78,7 +78,7 @@ export class AccountEntity implements AccountType{
 
     public async verifyPassword(password: string): Promise<void> {
         const valid = await verify(this.passwordHash, password);
-        if ( !valid ) throw new AppError('INVALID_PASSWORD', "Password is not correct");
+        if ( !valid ) throw new FunctionalError('unauthorized', "Password is not correct");
     }
 
     public setAsAdmin(): AccountEntity {

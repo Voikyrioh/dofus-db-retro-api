@@ -3,7 +3,7 @@ import { HTTPException } from "hono/http-exception";
 import { sign } from "hono/jwt";
 import { repository } from "../../../data-access/repository";
 import type { AccountEntity } from "../../entities/account.entity";
-import { AppError } from "@errors/app.error";
+import { FunctionalError } from "@errors/app.error";
 
 export async function createToken(account: AccountEntity) {
     return await sign({ id: account.id, role: account.role }, config.Server.JwtSignKey)
@@ -24,7 +24,7 @@ export async function retrieveAccountFromUsername(username: string): Promise<Acc
     const account = await repository.accounts.findByUsername(username);
 
     if ( account === null ) {
-        throw new AppError('NOT_FOUND', `Account with username ${ username } not found in database.`)
+        throw new FunctionalError('not-found', `Account with username ${ username } not found in database.`)
     }
 
     return account
