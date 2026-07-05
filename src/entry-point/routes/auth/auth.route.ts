@@ -1,7 +1,7 @@
 import config from "@config";
-import { AppError } from "@errors/app.error";
+import { FunctionalError } from "@errors/app.error";
 import { HttpCodes } from "@errors/http.error";
-import { customValidator } from "@libraries";
+import { betterZodValidator } from "@libraries";
 import { Hono } from "hono";
 import { setCookie, deleteCookie } from "hono/cookie"
 import { HTTPException } from "hono/http-exception";
@@ -11,13 +11,13 @@ import { authMiddleware } from "../../middlewares/auth";
 
 const router = new Hono();
 
-router.post("/register", customValidator('json', registerSchema), async (c) => {
+router.post("/register", betterZodValidator('json', registerSchema), async (c) => {
     const account = c.req.valid('json');
 
     return c.json(await usecases.auth.register.Execute(account));
 });
 
-router.post("/login", customValidator('json', loginSchema), async (c) => {
+router.post("/login", betterZodValidator('json', loginSchema), async (c) => {
     const account = c.req.valid('json');
     try {
         const {token, userInfos} = await usecases.auth.login.Execute(account.username, account.password)
@@ -29,7 +29,7 @@ router.post("/login", customValidator('json', loginSchema), async (c) => {
 
         return c.json({ ...userInfos, token });
     } catch (e) {
-        if ( e instanceof AppError && ['INVALID_PASSWORD', 'NOT_FOUND'].includes(e.type))
+        if ( e instanceof FunctionalError && ['unauthorized', 'not-found'].includes(e.code ?? ''))
             throw new HTTPException(HttpCodes.BAD_REQUEST, {message: 'INVALID_CREDENTIALS'})
         else throw e;
     }
