@@ -13,7 +13,13 @@ COPY database.json .
 COPY build.mjs .
 
 ENV NPM_CONFIG_LOGLEVEL warn
+# @Voikyrioh/observability vit sur GitHub Packages : auth requise au npm install.
+# GITHUB_TOKEN = build-arg passé par deploy-app.yml (NPM_TOKEN du repo, PAT read:packages).
+ARG GITHUB_TOKEN
+RUN echo "@Voikyrioh:registry=https://npm.pkg.github.com" > .npmrc \
+    && echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" >> .npmrc
 RUN npm install
+RUN rm .npmrc
 RUN npm install -g esbuild
 RUN node build.mjs
 

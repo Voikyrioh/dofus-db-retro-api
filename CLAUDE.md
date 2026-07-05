@@ -15,7 +15,7 @@ API REST pour la base de données Dofus Rétro. Stack : Hono (TypeScript) + MySQ
 - Framework : Hono
 - ORM/migrations : db-migrate + mysql2
 - Auth : JWT HS256 (clé symétrique base64)
-- Logs : pino
+- Logs & traces : `@Voikyrioh/observability` (pino corrélé OTel + spans SigNoz — GitHub Packages, `.npmrc` requis avec `GITHUB_TOKEN`)
 
 ## JWT
 
@@ -81,3 +81,12 @@ Push sur `main` → `ci.yml` → build image → appel `deploy-app.yml` (infra-a
 Secrets requis sur le repo (settés par `provision-app.yml` dans infra-as-code) :
 - `SSH_PRIVATE_KEY`, `SSH_HOST`, `SSH_PORT`
 - `VAULT_ADDR`, `VAULT_ROLE_ID`, `VAULT_SECRET_ID`
+
+## Observabilité (INFRA-16)
+
+- `src/instrumentation.ts` (init OTel) **doit rester le premier import** de `src/index.ts`.
+- Middleware `otelHono()` posé en premier dans `src/entry-point/app.ts`.
+- `UseCase.runStep` = 1 span par étape métier dans SigNoz.
+- Env : `OTEL_EXPORTER_OTLP_ENDPOINT` (prod `http://otel-collector:4318`, fiche app
+  `internal_services: [signoz]`) ; dev sans collector : `OTEL_SDK_DISABLED=true`.
+- Logs prod : stdout JSON (Fluent Bit → Loki) — `LOG_FILE` optionnel.
