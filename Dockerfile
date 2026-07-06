@@ -36,4 +36,6 @@ RUN mkdir -p /data/logs
 
 EXPOSE 8080
 
-CMD ["node", "./index.js"]
+# --import hook : loader ESM OTel — sans lui les deps CJS (mysql2) échappent
+# au patch, aucun span DB (cf. CHANGELOG observability 0.3.0).
+CMD ["node", "--import", "@Voikyrioh/observability/hook", "./index.js"]

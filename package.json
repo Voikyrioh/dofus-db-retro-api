@@ -17,7 +17,7 @@
 	"dependencies": {
 		"@hono/node-server": "^1.19.9",
 		"@hono/zod-validator": "^0.7.6",
-		"@Voikyrioh/observability": "^0.2.0",
+		"@Voikyrioh/observability": "^0.3.0",
 		"argon2": "^0.44.0",
 		"db-migrate": "^0.11.14",
 		"db-migrate-mysql": "^3.0.0",
