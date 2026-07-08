@@ -36,6 +36,8 @@ RUN mkdir -p /data/logs
 
 EXPOSE 8080
 
-# --import hook : loader ESM OTel — sans lui les deps CJS (mysql2) échappent
-# au patch, aucun span DB (cf. CHANGELOG observability 0.3.0).
-CMD ["node", "--import", "@Voikyrioh/observability/hook", "./index.js"]
+# --import register : hook ESM + init SDK dans le preload, AVANT le linking
+# du bundle — l'init in-app arrivait trop tard pour patcher les imports
+# statiques (mysql2 sans span, cf. CHANGELOG observability 0.4.0).
+# OTEL_SERVICE_NAME requis (fiche infra), l'init in-app devient un no-op.
+CMD ["node", "--import", "@Voikyrioh/observability/register", "./index.js"]

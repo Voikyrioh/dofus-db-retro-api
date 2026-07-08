@@ -84,9 +84,16 @@ Secrets requis sur le repo (settés par `provision-app.yml` dans infra-as-code) 
 
 ## Observabilité (INFRA-16)
 
-- `src/instrumentation.ts` (init OTel) **doit rester le premier import** de `src/index.ts`.
+- **Prod : l'init OTel se fait dans le preload** — CMD Docker
+  `node --import @Voikyrioh/observability/register ./index.js` +
+  `OTEL_SERVICE_NAME` (fiche infra). Nécessaire pour patcher les imports
+  statiques du bundle (mysql2) : une init in-app arrive après le linking →
+  zéro span DB (observability 0.4.0).
+- `src/instrumentation.ts` reste le premier import de `src/index.ts` pour le
+  dev (tsx, sans preload) ; en prod il devient un no-op (init idempotente).
 - Middleware `otelHono()` posé en premier dans `src/entry-point/app.ts`.
 - `UseCase.runStep` = 1 span par étape métier dans SigNoz.
-- Env : `OTEL_EXPORTER_OTLP_ENDPOINT` (prod `http://otel-collector:4318`, fiche app
-  `internal_services: [signoz]`) ; dev sans collector : `OTEL_SDK_DISABLED=true`.
-- Logs prod : stdout JSON (Fluent Bit → Loki) — `LOG_FILE` optionnel.
+- Env : `OTEL_EXPORTER_OTLP_ENDPOINT` (prod `http://signoz-otel-collector:4318`,
+  fiche app `internal_services: [signoz]`) ; dev sans collector :
+  `OTEL_SDK_DISABLED=true`.
+- Logs prod : stdout JSON (Fluent Bit → SigNoz) — `LOG_FILE=/dev/stdout`.
