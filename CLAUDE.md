@@ -1,5 +1,7 @@
 # CLAUDE.md — dofus-db-retro-api
 
+**Avant toute tâche**, lire [`ARCHITECTURE.md`](./ARCHITECTURE.md) puis [`docs/INDEX.md`](./docs/INDEX.md). Skills obligatoires : `/code-search`, `/dev-task`, `/bugfix`, `/doc-update`.
+
 ## Contexte
 
 API REST pour la base de données Dofus Rétro. Stack : Hono (TypeScript) + MySQL + db-migrate.
